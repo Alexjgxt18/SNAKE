@@ -1,11 +1,8 @@
-"""Snake, classic arcade game.
-
-Exercises
-
-1. How do you make the snake faster or slower?
-2. How can you make the snake go around the edges?
-3. How would you move the food?
-4. Change the snake to respond to mouse clicks.
+"""
+Juego: Paint
+Programador 1: Josué Fuentes
+Programador 2: Alex Flores
+Fecha: 10 / mayo / 2022
 """
 
 from random import randrange
@@ -56,11 +53,23 @@ def move():
     for body in snake:
         square(body.x, body.y, 9, 'black')
     
+        
+    #Movemos la comida
     if(cont%10==0):
-        food.x += randrange(-10,20,10)
-        food.y -= randrange(-10,20,10)
+      food.x += randrange(-10,20,10)
+      food.y -= randrange(-10,20,10)
+  
+    if(food.x < -200): #Si se sale por la izquierda
+      food.x += 10 #Se mueve a la derecha
 
+    if(food.x > 190): #Si se sale por la derecha
+      food.x -= 10 #Se mueve a la izquierda
 
+    if(food.y < -200): #Si se sale para arriba
+      food.y += 10 #Se mueve para abajo
+
+    if(food.y > 190): #Si se sale por abajo
+      food.y -= 10 #Se mueve para arriba
 
     square(food.x, food.y, 9, 'green')
     update()
