@@ -10,6 +10,7 @@ Exercises
 
 from random import randrange
 from turtle import *
+import random
 
 from freegames import square, vector
 
@@ -17,7 +18,9 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 cont = 0
-
+colors = ['green','blue','pink','black','orange']
+colorFood= random.choice(colors)
+colorSnake = random.choice(colors)
 def change(x, y):
     """Change snake direction."""
     aim.x = x
@@ -54,7 +57,7 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, colorSnake)
     
     if(cont%10==0):
         food.x += randrange(-10,20,10)
@@ -62,7 +65,7 @@ def move():
 
 
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, colorFood)
     update()
     ontimer(move, 100)
     
